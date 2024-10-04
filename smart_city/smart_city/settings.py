@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'app_smart',
     'corsheaders',
     'rest_framework_simplejwt.token_blacklist',
+    'django_filters'
 
 ]
 
@@ -114,11 +115,16 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+
+
+# Define o fuso horário da sua aplicação
+TIME_ZONE = 'America/Sao_Paulo'  # ou o fuso horário apropriado para você
+
+# Define se o Django deve usar horários UTC
+USE_TZ = True  # Isso deve ser True para usar timezones
 
 USE_I18N = True
 
-USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)

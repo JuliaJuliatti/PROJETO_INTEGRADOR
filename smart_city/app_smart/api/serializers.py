@@ -1,8 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
-
-#o Serializer serve para transformar objetos do Python e, formato JSON.
+from app_smart.models import Sensor
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -17,5 +16,8 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'password'] 
         extra_kwargs = {'password': {'write_only': True}}
 
-
+class SensorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Sensor
+        fields = '__all__'
 

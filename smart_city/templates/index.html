@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - Smart City</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #5ec1da, #1373aa); /* Gradiente de fundo */
+            color: #444;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            overflow: hidden; /* Impede a barra de rolagem */
+        }
+        header {
+            background-color: #ffffff;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            position: fixed;
+            top: 0;
+            transform: translateY(-100%);
+            animation: slideDown 0.5s forwards; /* Animação do cabeçalho */
+        }
+        @keyframes slideDown {
+            to {
+                transform: translateY(0);
+            }
+        }
+        h1 {
+            margin: 0;
+            color: #0d466d;
+            font-size: 2.5em; /* Tamanho do título */
+            animation: fadeIn 1s; /* Animação de fade in */
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        nav {
+            margin-top: 100px; /* Espaço para o cabeçalho fixo */
+        }
+        nav h2 {
+            color: #ffffff; /* Cor do subtítulo */
+            font-size: 1.5em; /* Tamanho do subtítulo */
+            margin-bottom: 20px; /* Espaço abaixo do subtítulo */
+            animation: fadeIn 1s 0.5s forwards; /* Animação de fade in com delay */
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            margin: 20px 0;
+            padding: 10px;
+            transition: transform 0.3s; /* Transição suave ao hover */
+        }
+        nav ul li:hover {
+            transform: scale(1.05); /* Aumenta o tamanho do item no hover */
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #ffffff;
+            background-color: #23629c;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s; /* Transição suave para o fundo e tamanho */
+            display: inline-block; /* Garante que o link se comporte como um bloco */
+        }
+        nav ul li a:hover {
+            background-color: #0aafd881;
+            transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+        }
+        footer {
+            position: absolute;
+            bottom: 20px;
+            text-align: center;
+            color: #ffffff;
+            animation: fadeIn 1s 1s forwards; /* Animação de fade in para o rodapé */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Smart City</h1>
+    </header>
+    
+    <nav>
+        <h2>O que você gostaria de fazer?</h2>
+        <ul>
+            <li><a href="cadastrar_usuario.html">Cadastrar Usuário</a></li>
+            <li><a href="upload_arquivo.html">Upload de Arquivo</a></li>
+        </ul>
+    </nav>
+
+    <footer>
+        <p>&copy; 2024 Smart City. Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>

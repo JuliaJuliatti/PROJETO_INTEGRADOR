@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload de Arquivos CSV</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        body {   
+            font-family: "Poppins", sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #57d6b6, #096c85); /* Gradiente verde */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Altura da tela inteira */
+        }
+        .container {
+            background-color: #ffffff; /* Fundo branco para o formulário */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Largura do contêiner */
+        }
+        h1 {
+            color: #343a40;
+            text-align: center; /* Centraliza o título */
+            font-size: 1.5em;
+            margin-bottom: 20px; /* Espaço abaixo do título */
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+        }
+        button {
+            width: 100%; /* Botão ocupa toda a largura */
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background: linear-gradient(to right, #57d6b6, #4ebbd6); /* Gradiente verde para o botão */
+            color: #fff;
+            cursor: pointer;
+            font-size: 1em; /* Tamanho da fonte do botão */
+            transition: background-color 0.3s, transform 0.3s; /* Transição suave */
+        }
+        button:hover {
+            background: linear-gradient(to right, #57d6b6, #4ebbd6); /* Gradiente verde para o botão */
+            transform: scale(1.05); /* Aumenta o tamanho do botão */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Upload de Arquivos CSV</h1>
+        
+        <form id="uploadSensorForm" enctype="multipart/form-data">
+            <label for="sensorFileInput">Sensores:</label>
+            <input type="file" id="sensorFileInput" name="file" accept=".csv" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <form id="uploadTemperatureForm" enctype="multipart/form-data">
+            <label for="temperatureFileInput">Temperatura:</label>
+            <input type="file" id="temperatureFileInput" name="file" accept=".csv" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <form id="uploadUmidadeForm" enctype="multipart/form-data">
+            <label for="fileUmidadeInput">Umidade:</label>
+            <input type="file" id="fileUmidadeInput" name="file" accept=".csv" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <form id="uploadContadorForm" enctype="multipart/form-data">
+            <label for="fileContadorInput">Contador:</label>
+            <input type="file" id="fileContadorInput" name="file" accept=".csv" required>
+            <button type="submit">Upload</button>
+        </form>
+
+        <form id="uploadLuminosidadeForm" enctype="multipart/form-data">
+            <label for="fileInput">Luminosidade:</label>
+            <input type="file" id="fileInput" name="file" accept=".csv" required>
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script>
+        async function uploadFile(formId, url) {
+            const formData = new FormData(document.getElementById(formId));
+            const response = await fetch(url, { method: 'POST', body: formData });
+
+            if (!response.ok) {
+                const errorResult = await response.json();
+                alert(errorResult.message || errorResult.error);
+                return;
+            }
+
+            const result = await response.json();
+            alert(result.message || 'Arquivo cadastrado com sucesso no banco de dados!');
+        }
+
+        document.getElementById('uploadSensorForm').onsubmit = function(event) {
+            event.preventDefault();
+            uploadFile('uploadSensorForm', 'http://127.0.0.1:8000/api/sensores/upload/');
+        };
+
+        document.getElementById('uploadTemperatureForm').onsubmit = function(event) {
+            event.preventDefault();
+            uploadFile('uploadTemperatureForm', 'http://127.0.0.1:8000/api/upload-temperatura/');
+        };
+
+        document.getElementById('uploadUmidadeForm').onsubmit = function(event) {
+            event.preventDefault();
+            uploadFile('uploadUmidadeForm', 'http://127.0.0.1:8000/api/upload-umidade/');
+        };
+
+        document.getElementById('uploadContadorForm').onsubmit = function(event) {
+            event.preventDefault();
+            uploadFile('uploadContadorForm', 'http://127.0.0.1:8000/api/upload-contador/');
+        };
+
+        document.getElementById('uploadLuminosidadeForm').onsubmit = function(event) {
+            event.preventDefault();
+            uploadFile('uploadLuminosidadeForm', 'http://127.0.0.1:8000/api/upload-luminosidade/');
+        };
+    </script>
+</body>
+</html>
