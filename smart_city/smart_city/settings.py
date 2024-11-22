@@ -149,9 +149,9 @@ REST_FRAMEWORK ={
 
 SIMPLE_JWT = {
  'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),
- # Define o tempo de expiração do token JWT PAdrão é 5 minutos
+ # Define o tempo de expiração do token JWT PAdrão é 15 minutos
  'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
- # Define o tempo de expiração do refresh token Padrao é 30 dias
+ # Define o tempo de expiração do refresh token Padrao é 7 dias
 }
 
 

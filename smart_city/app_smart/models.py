@@ -32,6 +32,7 @@ class TemperaturaData(models.Model):
     def __str__(self):
         return f"Temperatura: {self.valor} °C - {self.timestamp}"
 # Model para armazenar os dados de umidade
+
 class UmidadeData(models.Model):
     sensor = models.ForeignKey(Sensor, on_delete=models.CASCADE)
     valor = models.FloatField() # Valor da umidade relativa em %

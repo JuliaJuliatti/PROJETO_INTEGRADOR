@@ -1,0 +1,69 @@
+/* Home.css */
+
+/* Estilo para o container principal da página */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Garantindo que ocupe a tela inteira */
+    background-color: #f0f2f5;
+    padding-top: 70px; /* Dá espaço para a navbar fixa no topo */
+}
+
+/* Estilo para o título na página Home */
+.home-container h1 {
+    text-align: center;
+    font-size: 2.5em;
+    margin: 20px 0;
+}
+
+.home-container span {
+    color: #949f57;  /* Cor do texto destacado */
+}
+
+.home-content {
+    display:flex;
+    justify-content: space-between; /* Espaça os itens de forma uniforme */
+    align-items: center; /* Alinha o texto e a imagem verticalmente */
+    width: 100%; /* Deixa o conteúdo principal com 80% da largura da tela */
+    max-width: 1200px; /* Limita a largura máxima */
+    margin-top: 40px; /* Espaçamento entre o título e o conteúdo */
+}
+
+/* Seção de texto */
+.text-section {
+    flex: 1; /* O texto ocupa o maior espaço possível */
+    margin-right: 40px; /* Espaço entre o texto e a imagem */
+    font-size: 1.2em;
+    color: #333;
+}
+
+.text-section h2 {
+    font-size: 32px;
+    color: #949f57;
+    margin-bottom: 20px;
+}
+
+.text-section p {
+    line-height: 1.6;
+}
+
+/* Seção de imagem */
+.image-section {
+    flex: 1; /* A imagem ocupa o maior espaço possível */
+    display: flex;
+    justify-content: center; /* Centraliza a imagem dentro da div */
+}
+
+.image-section img {
+    max-width: 100%; /* A imagem vai ocupar 100% da largura da sua div, mas vai manter a proporção */
+    height: auto;
+    border-radius: 35px; /* Adiciona bordas arredondadas à imagem */
+}
+/* Responsividade: Ajuste para telas menores */
+@media (max-width: 768px) {
+    .home-container h1 {
+        font-size: 2em;  /* Ajusta o tamanho da fonte do título em telas pequenas */
+    }
+}

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
 from django.contrib.auth.hashers import make_password
-from app_smart.models import Sensor
+from app_smart.models import Sensor, TemperaturaData, LuminosidadeData, UmidadeData, ContadorData
 
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -16,8 +16,33 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'password'] 
         extra_kwargs = {'password': {'write_only': True}}
 
-class SensorSerializer(serializers.ModelSerializer):
+
+# serializer para que os dados possam ser consumidos 
+
+#1 passo é sempre criar um serializer pois ele vai converter as infos para JSON
+
+#temperatura
+class TemperaturaDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Sensor
-        fields = '__all__'
+        model = TemperaturaData
+        fields = ['id', 'sensor', 'valor', 'timestamp']
+
+#luminosidade
+class LuminosidadeDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = LuminosidadeData
+        fields = ['id', 'sensor', 'valor', 'timestamp']
+
+#umidade
+class UmidadeDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UmidadeData
+        fields = ['id', 'sensor', 'valor', 'timestamp']
+
+#contador (conta pessoas) 
+
+class ContadorDataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContadorData
+        fields = ['id', 'sensor', 'timestamp']
 

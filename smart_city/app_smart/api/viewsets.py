@@ -5,10 +5,18 @@ from rest_framework.parsers import MultiPartParser, FormParser
 from app_smart.api import serializers
 from app_smart.models import Sensor, TemperaturaData, UmidadeData, ContadorData, LuminosidadeData
 from django.core.files.storage import default_storage
+from rest_framework.decorators import action
+from django.contrib.auth import authenticate, login
+from rest_framework import status
 import csv
 import os
 from django.utils import timezone
 from datetime import datetime
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from .serializers import TemperaturaDataSerializer, LuminosidadeDataSerializer, UmidadeDataSerializer, ContadorDataSerializer
+from rest_framework.permissions import AllowAny
+from rest_framework.decorators import api_view
 
 class CreateUserAPIViewSet(generics.CreateAPIView):
     queryset = User.objects.all()
@@ -18,6 +26,8 @@ class CreateUserAPIViewSet(generics.CreateAPIView):
 class SensorViewSet(viewsets.ViewSet):
     queryset = Sensor.objects.all()
     parser_classes = (MultiPartParser, FormParser)
+
+    
 
     def upload_csv(self, request):
         if 'file' not in request.FILES:
@@ -52,8 +62,13 @@ class SensorViewSet(viewsets.ViewSet):
                     mac_address=row.get('mac_address', None)
                 )
 
-class TemperaturaDataViewSet(viewsets.ViewSet):
-    queryset = TemperaturaData.objects.all()
+class TemperaturaDataListViewSet(generics.ListAPIView):
+    queryset = TemperaturaData.objects.all().order_by('-timestamp')
+    serializer_class = TemperaturaDataSerializer
+    # Opcional: você pode usar filtros ou paginação se necessário.
+    
+class UploadTemperaturaCSV(APIView):
+
     parser_classes = (MultiPartParser, FormParser)
 
     def upload_csv(self, request):
@@ -242,3 +257,40 @@ class LuminosidadeDataViewSet(viewsets.ViewSet):
                     raise Exception(f"Sensor com ID {sensor_id} não encontrado.")
                 except Exception as e:
                     raise Exception(f"Erro ao inserir dados de luminosidade: {str(e)}")
+
+    def list(self, request):
+        luminosidade_data = LuminosidadeData.objects.all().order_by('-timestamp')  # Ordena pela data
+        serializer = LuminosidadeDataSerializer(luminosidade_data, many=True)
+        return Response(serializer.data)
+
+
+
+#view para consumir dados de umidade
+
+class UmidadeDataList(generics.ListCreateAPIView):
+    queryset = UmidadeData.objects.all()
+    serializer_class = UmidadeDataSerializer
+
+
+#view para consumir dados de contador (contar pessoas)
+
+class ContadorDataList(generics.ListCreateAPIView):
+    queryset = ContadorData.objects.all()
+    serializer_class = ContadorDataSerializer
+
+#view para consumir dados de luminosidade 
+class LuminosidadeDataList(generics.ListCreateAPIView):
+    queryset = LuminosidadeData.objects.all()
+    serializer_class = LuminosidadeDataSerializer
+    permission_classes = [AllowAny] 
+
+
+#crud
+# @api_view(['POST'])
+# def create_luminosidade_data(request):
+#     if request.method == 'POST':
+#         serializer = LuminosidadeDataSerializer(data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data, status=status.HTTP_201_CREATED)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
