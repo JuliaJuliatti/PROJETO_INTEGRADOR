@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Contador.css';
+import styles from './Contador.module.css';
 
 const TabelaContador = () => {
     const [dados, setDados] = useState([]);
 
     useEffect(() => {
-        // Substitua pela URL da sua API Django
+     
         axios.get('http://localhost:8000/api/contador/')
             .then(response => {
                 setDados(response.data);
@@ -17,28 +17,44 @@ const TabelaContador = () => {
     }, []);
 
     return (
-        <div className='tabela-container'>
-            <h2>Dados do Contador</h2>
-            <table className='tabela'>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Sensor</th>
-                        <th>Timestamp</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {dados.map((item) => (
-                        <tr key={item.id}>
-                            <td>{item.id}</td>
-                            <td>{item.sensor}</td>
-                            <td>{new Date(item.timestamp).toLocaleString()}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+        <div className={styles["tabela-container"]}>
+          <h1>Dados Quantidade de Pessoas</h1>
+          <table className={styles["tabela"]}>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Localização</th>
+                <th>Qnt Pessoas</th>
+                <th>Unidade de Medida</th>
+                <th>Latitude</th>
+                <th>Longitude</th>
+                <th>Responsável</th>
+                <th>Status Operacional</th>
+                <th>Observação</th>
+                <th>MAC Address</th>
+                <th>Hora e Dia</th>
+              </tr>
+            </thead>
+            <tbody>
+              {dados.map((item) => (
+                <tr key={item.id}>
+                  <td>{item.id}</td>
+                  <td>{item.localizacao}</td> {/* Localização do sensor */}
+                  <td>{item.valor}</td> {/* Temperatura medida */}
+                  <td>{item.unidade_medida}</td> {/* Unidade de medida (°C, °F, etc.) */}
+                  <td>{item.latitude}</td> {/* Latitude do sensor */}
+                  <td>{item.longitude}</td> {/* Longitude do sensor */}
+                  <td>{item.responsavel}</td> {/* Responsável pelo sensor */}
+                  <td>{item.status_operacional ? 'Ativo' : 'Inativo'}</td> {/* Status operacional */}
+                  <td>{item.observacao}</td> {/* Observações sobre o sensor */}
+                  <td>{item.mac_address}</td> {/* MAC Address */}
+                  <td>{new Date(item.timestamp).toLocaleString()}</td> {/* Formatação da data de timestamp */}
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
+      );
 };
 
 export default TabelaContador;

@@ -1,11 +1,12 @@
 // src/pages/Page1.js
 import React from 'react';
 import TabelaContador from '../TABELAS/contador/ContadorTabela';
+import Navbar from './Navbar';
 
 const Contador = () => {
   return (
   <div>
-    <h1>Contador</h1>
+    <Navbar/>
     <TabelaContador> </TabelaContador>
     </div>
   )

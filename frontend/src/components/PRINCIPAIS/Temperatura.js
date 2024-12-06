@@ -1,12 +1,12 @@
 // src/pages/Page1.js
 import React from 'react';
 import TemperaturaTable from '../TABELAS/temperatura/TemperaturaTabela';
-
+import Navbar from './Navbar';
 
 const Temperatura = () => {
   return(
  <div>
-  <h1>Temperatura </h1>
+    <Navbar/>
     <TemperaturaTable>
     </TemperaturaTable>
 </div>

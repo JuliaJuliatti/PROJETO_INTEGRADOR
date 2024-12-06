@@ -5,23 +5,25 @@
     justify-content: center;     /* Centraliza os itens da navbar */
     align-items: center;         /* Alinha verticalmente */
     padding: 10px 20px;          /* Espaçamento interno */
-    background-color: #949f57;   /* Cor de fundo da navbar */
+    background-color: #fff;   /* Cor de fundo da navbar */
     position: fixed;             /* Fixa a navbar no topo */
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;               /* Garante que a navbar fique acima de outros elementos */
+    z-index: 1000; 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);            
 }
 
 .navbar button {
     padding: 10px 20px;
     margin: 0 10px;             /* Espaço entre os botões */
-    color: white;
-    background-color: #949f57;  /* Fundo dos botões */
+    color: rgb(0, 0, 0);
+    background-color: #fff;  /* Fundo dos botões */
     border: none;
     font-size: 1em;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s; /* Transições suaves */
+
 }
 
 .navbar button:hover {
@@ -52,5 +54,5 @@
 }
 
 .logout-button:hover {
-    background-color: #d32f2f; /* Cor mais escura para o hover */
+    background-color: #ec0404; /* Cor mais escura para o hover */
 }

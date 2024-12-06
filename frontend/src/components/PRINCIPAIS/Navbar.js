@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom"; // Importando Link e useNavigate
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Importando ícone de logout
+import { faHome, faSignInAlt, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Importando ícone de logout
 import './Navbar.css';
 
 const Navbar = () => {
@@ -29,6 +29,12 @@ const Navbar = () => {
 
     return (
         <nav className="navbar">
+
+              {/* Botão de Home */}
+              <button onClick={() => navigate("/")}>
+                <FontAwesomeIcon icon={faHome} />
+                </button>
+
             <button onClick={() => handleNavigation("/Luminosidade")}>Luminosidade</button>
             <button onClick={() => handleNavigation("/Umidade")}>Umidade</button>
             <button onClick={() => handleNavigation("/Temperatura")}>Temperatura</button>
@@ -38,13 +44,13 @@ const Navbar = () => {
             {token ? (
                 <button onClick={handleLogout} className="logout-button">
                     <FontAwesomeIcon icon={faSignOutAlt} />
-                    Logout
+                    
                 </button>
             ) : (
                 <Link to="/login" className="login-link">
                     <button>
                         <FontAwesomeIcon icon={faSignInAlt} />
-                        Login
+                        
                     </button>
                 </Link>
             )}

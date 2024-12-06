@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";  // Importe o Link para navegação
 import "./Login.css";
 import backgroundImage from "./SENAI.png";
 
@@ -73,7 +74,13 @@ const Login = () => {
             required
           />
           <button type="submit">Entrar</button>
+           {/* Link para redirecionar para a página de cadastro */}
+        <p className="cadastro">
+          Ainda não possui cadastro? <Link to="/cadastro">Se cadastre aqui!</Link>
+        </p>
         </form>
+
+       
       </div>
     </div>
   );

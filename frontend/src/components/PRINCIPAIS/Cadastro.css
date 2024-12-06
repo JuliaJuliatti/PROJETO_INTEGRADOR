@@ -1,0 +1,72 @@
+/* Cadastro.css */
+
+.cadastro-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f0f2f5;
+  }
+  
+  .image-section {
+    flex: 1; /* Ocupa 50% da largura */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url('./SENAI.png');
+    background-size: cover;
+  }
+  
+  .form-section {
+    flex: 1; /* Ocupa 50% da largura */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form {
+    background: white;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h2 {
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  button {
+    background-color: #949f57;
+    color: white;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #949f57;
+  }
+  
+  .switch-text {
+    margin-top: 10px;
+    color: #007bff;
+    cursor: pointer;
+  }
+  
+  .switch-text:hover {
+    text-decoration: underline;
+  }
+  

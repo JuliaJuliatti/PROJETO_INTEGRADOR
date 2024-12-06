@@ -3,4 +3,4 @@ venv/
 env/
 ENV/
 venv.bak/
-node_modules/
+/node_modules

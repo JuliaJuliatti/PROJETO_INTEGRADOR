@@ -68,3 +68,7 @@ button:hover {
 .switch-text:hover {
   text-decoration: underline;
 }
+
+.cadastro p{
+  text-align: center;
+}

@@ -2,6 +2,10 @@ import React from "react";
 import Navbar from "./Navbar"; // Importando o componente Navbar
 import './Home.css'; // Importando o CSS
  import SmartCity from './SENAI.png'
+import ApexChart from "../graficos/LineChart";
+
+
+
 
 const Home = () => {
     return (
@@ -27,7 +31,12 @@ const Home = () => {
                 <div className="image-section">
                     <img src={SmartCity} alt="Smart City" />
                 </div>
+
             </div>
+            <div>
+                <ApexChart/>
+            </div>
+
         </div>
     );
 };

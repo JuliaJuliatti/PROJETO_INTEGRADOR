@@ -1,0 +1,75 @@
+
+
+/* Estilo do contêiner principal */
+.tabela-container {
+
+    max-width: 1400px;
+    margin: 20px auto; 
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    padding-top: 20px;
+
+}
+
+/* Estilo do título */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #000000; 
+    text-align: center;
+    font-weight: bold;
+    padding-top: 25px;
+}
+
+/* Estilo da tabela */
+.tabela {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f0f0f0; 
+    border-radius: 8px; 
+    overflow: hidden; 
+    max-width: 1400px;
+}
+
+.tabela th,
+.tabela td {
+    padding: 14px;
+    font-size: 1rem;
+    text-align: center; 
+    border: 1px solid #ddd; 
+    color: #333; 
+}
+
+.tabela th {
+    background-color: #38b9e0; 
+    color: #ffffff;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.tabela tr:nth-child(even) {
+    background-color: #e6e6e6; 
+}
+
+.tabela tr:hover {
+    background-color: #dcdcdc; 
+    cursor: pointer;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+    .tabela-container {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .tabela th,
+    .tabela td {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
