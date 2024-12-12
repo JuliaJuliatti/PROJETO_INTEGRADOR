@@ -1,0 +1,8 @@
+para rodar o back:
+
+\Desktop\integrador\PROJETO_INTEGRADOR\smart_city> py manage.py runserver
+
+
+para rodar o front:
+
+\Desktop\integrador\PROJETO_INTEGRADOR\frontend> npm start
