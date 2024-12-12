@@ -20,19 +20,21 @@ const Cadastro = () => {
     try {
       const response = await axios.post("http://127.0.0.1:8000/api/registro/", {
         username: formData.username,
-        email: formData.email,  // Enviando o campo email agora
-        password: formData.password,  
+        email: formData.email,
+        password: formData.password,
       });
+
+      // Verifique a resposta aqui (console.log)
+      console.log("Cadastro realizado com sucesso:", response.data);
 
       setSuccessMessage("Cadastro realizado com sucesso! Faça login para continuar.");
       setErrorMessage("");
 
-      // Após o cadastro bem-sucedido, redireciona para a tela de login
-      setTimeout(() => {
-        navigate("/login");
-      }, 2000); // Aguarda 2 segundos para mostrar a mensagem de sucesso antes de redirecionar
+      // Redirecionamento para a página de login
+      navigate("/login");
 
     } catch (error) {
+      console.log("Erro no cadastro:", error);
       setErrorMessage("Ocorreu um erro ao realizar o cadastro. Tente novamente.");
       setSuccessMessage("");
     }

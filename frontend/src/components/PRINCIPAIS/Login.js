@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";  // Importe o Link para navegação
+import { useNavigate } from "react-router-dom"; // Importa o hook useNavigate
+import { Link } from "react-router-dom";
 import "./Login.css";
 import backgroundImage from "./SENAI.png";
 
@@ -9,7 +9,7 @@ const Login = () => {
   const [formData, setFormData] = useState({ username: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Hook para navegação
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,16 +33,8 @@ const Login = () => {
       setSuccessMessage("Login realizado com sucesso!");
       setErrorMessage("");
 
-      // Verificar se existe uma página para redirecionar (armazenada na chave 'next' no localStorage)
-      const next = localStorage.getItem("next");
-
-      if (next) {
-        localStorage.removeItem("next"); // Remover 'next' após redirecionar
-        navigate(next); // Redirecionar para a página armazenada
-      } else {
-        navigate("/"); // Se não houver 'next', redireciona para uma página padrão
-      }
-
+      // Redireciona para a página home após o login
+      navigate("/"); // Aqui você garante que o redirecionamento seja feito para /home
     } catch (error) {
       setErrorMessage("Usuário ou senha inválidos. Tente novamente.");
       setSuccessMessage("");
@@ -74,13 +66,11 @@ const Login = () => {
             required
           />
           <button type="submit">Entrar</button>
-           {/* Link para redirecionar para a página de cadastro */}
-        <p className="cadastro">
+          <p className="cadastro">
           Ainda não possui cadastro? <Link to="/cadastro">Se cadastre aqui!</Link>
-        </p>
-        </form>
+          </p>
 
-       
+        </form>
       </div>
     </div>
   );
